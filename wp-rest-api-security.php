@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: WP REST API Security
- * Description: some security for rest
+ * Description: A UI to choose which REST API endpoints to enable.
  * Text Domain: wp-rest-api-security
  * Version: 1.0.0
  * Author: Charles Lecklider
@@ -15,6 +15,21 @@
  * @package restes
  */
 namespace org\lecklider\charles\wordpress\rest_security;
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/**
+ *
+ * @since 1.0.0
+ *
+ * @param string $str
+ */
+function hash_piece(string $str)
+{
+    return md5($str);
+}
 
 /**
  *
@@ -109,17 +124,6 @@ if (is_admin()) {
      *
      * @since 1.0.0
      *
-     * @param string $str
-     */
-    function hash(string $str)
-    {
-        return md5($str);
-    }
-
-    /**
-     *
-     * @since 1.0.0
-     *
      * @param array     $tree
      */
     function load_tree(array $tree)
@@ -131,7 +135,7 @@ if (is_admin()) {
             $pieces = split_route($route);
             foreach ($pieces as $branch) {
                 if ($branch > '') {
-                    $branch_hash = hash($branch);
+                    $branch_hash = hash_piece($branch);
 
                     if (is_array($tree_ptr) && array_key_exists($branch_hash, $tree_ptr)) {
                         $tree_ptr[$branch_hash]['opts']['name'] = $branch;
@@ -310,14 +314,14 @@ if (is_admin()) {
 
                 $tree_ptr = &$tree;
                 for ($i = 0; $i < count($pieces)-1; $i++) {
-                    $hash = hash($pieces[$i]);
+                    $hash = hash_piece($pieces[$i]);
                     if (array_key_exists($hash, $tree_ptr)) {
                         $tree_ptr = &$tree_ptr[$hash]['branches'];
                     } else {
                         rest_404();
                     }
                 }
-                $hash = hash($pieces[$i]);
+                $hash = hash_piece($pieces[$i]);
                 if (is_array($tree_ptr) && array_key_exists($hash, $tree_ptr)) {
                     $tree_ptr = &$tree_ptr[$hash];
                     if (true == $tree_ptr['opts']['disabled']) {
