@@ -10,11 +10,11 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Provides a UI to enable select REST API endpoints and unauthenticated access.
+Provides a UI to control which REST API endpoints are enabled and which require authentication.
 
 == Description ==
 
-The REST API is essential for any modern web framework, but with it comes a huge attack surface. *WP REST API Security* reduces the attack surface by disabling all the REST API endpoints by default, and allowing you to enable only those actually needed. Those that are enabled require authentication by default, allowing you to choose which to make public.
+The REST API is essential for any modern web framework, but with it comes a huge attack surface. *WP REST API Security* reduces the attack surface by disabling all the REST API endpoints by default, allowing you to enable only those actually needed. Those that are enabled require authentication by default, allowing you to choose which to make public.
 
 > **N.B.** If you are using the new Block Editor you must keep nearly all the endpoints enabled for it to work, but none need be public.
 
