@@ -1,0 +1,27 @@
+#poststuff {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+#poststuff tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+#poststuff th,
+#poststuff td {
+  padding: 0 0.5em;
+}
+#poststuff th.endpoint {
+  text-align: left;
+}
+#poststuff td {
+  text-align: center;
+}
+#poststuff td.endpoint {
+  font-family: monospace;
+  text-align: left;
+}
+#poststuff td label {
+  font-weight: normal;
+}
+.postbox .inside {
+  text-align: right;
+}
