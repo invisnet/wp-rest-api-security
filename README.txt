@@ -22,6 +22,7 @@ The REST API is essential for any modern web framework, but with it comes a huge
 
 1. Install via the Plugin Directory, or upload to your plugins directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Go to *Settings* -> *WP REST API Security*
 
 > **N.B.** Activating *WP REST API Security* will disable all REST endpoints - you **must** enable the ones you need.
 
