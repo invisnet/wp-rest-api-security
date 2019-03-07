@@ -5,7 +5,7 @@ Author URI: https://charles.lecklider.org/
 Tags: rest, api, security
 Requires at least: 4.9
 Tested up to: 5.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -22,11 +22,21 @@ The REST API is essential for any modern web framework, but with it comes a huge
 
 1. Install via the Plugin Directory, or upload to your plugins directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Go to *Settings* -> *WP REST API Security*
 
 > **N.B.** Activating *WP REST API Security* will disable all REST endpoints - you **must** enable the ones you need.
 
 == Changelog ==
 
+= 1.1.0 =
+* Bugfix.
+* Use actions.
+
 = 1.0.0 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 1.1.0 =
+* This version works properly.
 
