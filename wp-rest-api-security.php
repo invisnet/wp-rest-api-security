@@ -318,23 +318,23 @@ if (is_admin()) {
                     if (array_key_exists($hash, $tree_ptr)) {
                         $tree_ptr = &$tree_ptr[$hash]['branches'];
                     } else {
-                        rest_404();
+                        do_action('wp_rest_api_security_endpoint_disabled', $route, $path);
                     }
                 }
                 $hash = hash_piece($pieces[$i]);
                 if (is_array($tree_ptr) && array_key_exists($hash, $tree_ptr)) {
                     $tree_ptr = &$tree_ptr[$hash];
                     if (true == $tree_ptr['opts']['disabled']) {
-                        rest_404();
+                        do_action('wp_rest_api_security_endpoint_disabled', $route, $path);
                     }
                 } else {
-                    rest_404();
+                    do_action('wp_rest_api_security_endpoint_disabled', $route, $path);
                 }
 
                 if (@$tree_ptr['opts']['public'] || is_user_logged_in()) {
                     return $response;
                 } else {
-                    rest_401();
+                    do_action('wp_rest_api_security_endpoint_private', $route, $path);
                 }
             }
         }
@@ -344,10 +344,10 @@ if (is_admin()) {
     add_filter('rest_pre_dispatch', __NAMESPACE__.'\rest_pre_dispatch', 10, 3);
 
     /**
-     *
+     * @since 1.1.0 Use action
      * @since 1.0.0
      */
-    function rest_404()
+    function rest_404(string $route, string $path)
     {
         exit(json_encode([
             'code'=>'rest_no_route',
@@ -357,12 +357,13 @@ if (is_admin()) {
             ]
         ]));
     }
+    add_action('wp_rest_api_security_endpoint_disabled', __NAMESPACE__.'\rest_404', 99, 2);
 
     /**
-     *
+     * @since 1.1.0 Use action
      * @since 1.0.0
      */
-    function rest_401()
+    function rest_401(string $route, string $path)
     {
         exit(json_encode([
             'code' => 'rest_forbidden',
@@ -372,5 +373,6 @@ if (is_admin()) {
             ]
         ]));
     }
+    add_action('wp_rest_api_security_endpoint_private', __NAMESPACE__.'\rest_401', 10, 2);
 }
 
