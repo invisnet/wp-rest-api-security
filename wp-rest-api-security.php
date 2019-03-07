@@ -215,14 +215,14 @@ if (is_admin()) {
                 filter_regex(@$node['opts']['name']),
                 str_repeat('&nbsp;', 4)
             );
-            printf('<td><input %s class="enabled %s" %s id="%s" type="checkbox" name="rest-security[enabled][%s]"></td>',
+            printf('<td><input %s class="enabled %s" %s id="%s" type="checkbox" name="wp-rest-api-security[enabled][%s]"></td>',
                 checked($node['opts']['disabled'], false, false),
                 join('_', $pnodes),
                 disabled(!$node['opts']['disabled'] || $enabled, false, false),
                 $id,
                 join('][', array_merge($pnodes, [$branch]))
             );
-            printf('<td><input %s class="public_%s" %s id="public_%s" type="checkbox" name="rest-security[public][%s]"></td>',
+            printf('<td><input %s class="public_%s" %s id="public_%s" type="checkbox" name="wp-rest-api-security[public][%s]"></td>',
                 checked(@$node['opts']['public'], true, false),
                 join('_', $pnodes),
                 disabled($node['opts']['disabled'], true, false),
