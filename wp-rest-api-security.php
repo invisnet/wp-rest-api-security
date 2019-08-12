@@ -3,7 +3,7 @@
  * Plugin Name: WP REST API Security
  * Description: A UI to choose which REST API endpoints to enable.
  * Text Domain: wp-rest-api-security
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Charles Lecklider
  * Author URI: https://charles.lecklider.org/
  * License: GPLv2
@@ -78,6 +78,12 @@ if (is_admin()) {
     function sanitize_callback($input)
     {
         $tree = [];
+        if (!isset($input['enabled'])) {
+            $input['enabled'] = [];
+        }
+        if (!isset($input['public'])) {
+            $input['public'] = [];
+        }
         update_tree($tree, $input['enabled'], 'disabled', false);
         update_tree($tree, $input['public'], 'public', true);
 
