@@ -3,7 +3,7 @@
  * Plugin Name: WP REST API Security
  * Description: A UI to choose which REST API endpoints to enable.
  * Text Domain: wp-rest-api-security
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Charles Lecklider
  * Author URI: https://charles.lecklider.org/
  * License: GPLv2
@@ -12,9 +12,9 @@
  */
 
 /**
- * @package restes
+ * @package wp_rest_api_security
  */
-namespace org\lecklider\charles\wordpress\rest_security;
+namespace org\lecklider\charles\wordpress\wp_rest_api_security;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -91,8 +91,8 @@ if (is_admin()) {
     function admin_menu()
     {
         $hook = add_options_page(
-            'WP REST API Security',
-            'WP REST API Security',
+            'REST API Security',
+            'REST API Security',
             'manage_options',
             'wp-rest-api-security',
             __NAMESPACE__.'\display'
@@ -222,7 +222,7 @@ if (is_admin()) {
                 $id,
                 join('][', array_merge($pnodes, [$branch]))
             );
-            printf('<td><input %s class="public_%s" %s id="public_%s" type="checkbox" name="wp-rest-api-security[public][%s]"></td>',
+            printf('<td><input %s class="public %s" %s id="public_%s" type="checkbox" name="wp-rest-api-security[public][%s]"></td>',
                 checked(@$node['opts']['public'], true, false),
                 join('_', $pnodes),
                 disabled($node['opts']['disabled'], true, false),
@@ -232,6 +232,9 @@ if (is_admin()) {
             echo '</tr>';
 
             if (array_key_exists('branches', $node)) {
+                if (!is_array($node['branches'])) {
+                    $node['branches'] = [];
+                }
                 $rnodes = $pnodes;
                 $rnodes[] = $branch;
                 print_tree($node['branches'], false, $rnodes);
@@ -247,7 +250,7 @@ if (is_admin()) {
     {
         $tree = load_tree(get_option('wp-rest-api-security', []));
 ?>
-<div class="wrap">
+<div class="wrap wp-rest-api-security">
   <div id="icon-options-general" class="icon32"></div>
   <h1>WP REST API Security</h1>
   <h2 class="nav-tab-wrapper">
