@@ -3,7 +3,7 @@
  * Plugin Name: WP REST API Security
  * Description: A UI to choose which REST API endpoints to enable.
  * Text Domain: wp-rest-api-security
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Charles Lecklider
  * Author URI: https://charles.lecklider.org/
  * License: GPLv2

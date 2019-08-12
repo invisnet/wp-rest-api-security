@@ -5,7 +5,7 @@ Author URI: https://charles.lecklider.org/
 Tags: rest, api, security
 Requires at least: 4.9
 Tested up to: 5.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -28,6 +28,9 @@ The REST API is essential for any modern web framework, but with it comes a huge
 
 == Changelog ==
 
+= 1.1.2 =
+* Fix array error.
+
 = 1.1.1 =
 * Fix CSS leakage.
 * Fix array warning.
@@ -38,9 +41,4 @@ The REST API is essential for any modern web framework, but with it comes a huge
 
 = 1.0.0 =
 * Initial release.
-
-== Upgrade Notice ==
-
-= 1.1.1 =
-* This version works properly.
 
