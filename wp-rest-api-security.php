@@ -3,7 +3,7 @@
  * Plugin Name: WP REST API Security
  * Description: A UI to choose which REST API endpoints to enable.
  * Text Domain: wp-rest-api-security
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Charles Lecklider
  * Author URI: https://charles.lecklider.org/
  * License: GPLv2
@@ -222,7 +222,7 @@ if (is_admin()) {
                 $id,
                 join('][', array_merge($pnodes, [$branch]))
             );
-            printf('<td><input %s class="public_%s" %s id="public_%s" type="checkbox" name="wp-rest-api-security[public][%s]"></td>',
+            printf('<td><input %s class="public %s" %s id="public_%s" type="checkbox" name="wp-rest-api-security[public][%s]"></td>',
                 checked(@$node['opts']['public'], true, false),
                 join('_', $pnodes),
                 disabled($node['opts']['disabled'], true, false),
