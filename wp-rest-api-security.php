@@ -12,9 +12,9 @@
  */
 
 /**
- * @package restes
+ * @package wp_rest_api_security
  */
-namespace org\lecklider\charles\wordpress\rest_security;
+namespace org\lecklider\charles\wordpress\wp_rest_api_security;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -91,8 +91,8 @@ if (is_admin()) {
     function admin_menu()
     {
         $hook = add_options_page(
-            'WP REST API Security',
-            'WP REST API Security',
+            'REST API Security',
+            'REST API Security',
             'manage_options',
             'wp-rest-api-security',
             __NAMESPACE__.'\display'
