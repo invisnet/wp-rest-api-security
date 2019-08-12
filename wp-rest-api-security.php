@@ -232,6 +232,9 @@ if (is_admin()) {
             echo '</tr>';
 
             if (array_key_exists('branches', $node)) {
+                if (!is_array($node['branches'])) {
+                    $node['branches'] = [];
+                }
                 $rnodes = $pnodes;
                 $rnodes[] = $branch;
                 print_tree($node['branches'], false, $rnodes);
