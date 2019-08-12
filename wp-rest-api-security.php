@@ -78,6 +78,12 @@ if (is_admin()) {
     function sanitize_callback($input)
     {
         $tree = [];
+        if (!isset($input['enabled'])) {
+            $input['enabled'] = [];
+        }
+        if (!isset($input['public'])) {
+            $input['public'] = [];
+        }
         update_tree($tree, $input['enabled'], 'disabled', false);
         update_tree($tree, $input['public'], 'public', true);
 
