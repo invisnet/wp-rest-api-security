@@ -247,7 +247,7 @@ if (is_admin()) {
     {
         $tree = load_tree(get_option('wp-rest-api-security', []));
 ?>
-<div class="wrap">
+<div class="wrap wp-rest-api-security">
   <div id="icon-options-general" class="icon32"></div>
   <h1>WP REST API Security</h1>
   <h2 class="nav-tab-wrapper">
